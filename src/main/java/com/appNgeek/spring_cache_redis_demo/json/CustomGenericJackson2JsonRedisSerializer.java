@@ -1,7 +1,6 @@
 package com.appNgeek.spring_cache_redis_demo.json;
 
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Sort.Order;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 import org.springframework.lang.Nullable;
