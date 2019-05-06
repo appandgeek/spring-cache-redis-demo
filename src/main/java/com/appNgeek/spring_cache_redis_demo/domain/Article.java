@@ -2,6 +2,7 @@ package com.appNgeek.spring_cache_redis_demo.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,11 +21,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true, exclude = {"user"})
-@ToString(exclude = {"user"})
+@ToString(callSuper = true, exclude = {"user"})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Article.class)
 @Entity
 @Table(name = "articles")
 public class Article extends BaseEntity {
+
+	private static final long serialVersionUID = 5630264440931055927L;
 
 	@Column(name = "title", unique = true, nullable = false, length = 200)
 	private String title;
@@ -32,7 +35,7 @@ public class Article extends BaseEntity {
 	@Column(name = "body", columnDefinition = "TEXT")
 	private String body;
 
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	private User user;
 
 }

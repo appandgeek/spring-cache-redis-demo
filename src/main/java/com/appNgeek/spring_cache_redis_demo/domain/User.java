@@ -25,11 +25,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString()
+@ToString(callSuper = true)
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = User.class)
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
+
+	private static final long serialVersionUID = 5135149878647405678L;
 
 	@Column(name = "name", length = 40)
 	private String name;
